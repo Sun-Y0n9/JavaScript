@@ -28,10 +28,9 @@ module.exports = {
 				use: {
 					loader: 'url-loader',
 					options: {
-						// placeholder 占位符
 						name: '[name]-[hash:7].[ext]',
 						outputPath: 'static/img',
-						limit: 102400 // 小于100k打包到js,大于100k保留图片
+						limit: 102400
 					}
 				}
 			}, {
@@ -63,6 +62,5 @@ module.exports = {
 		new CleanWebpackPlugin({
 			cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, 'dist')]
 		})
-		// new webpack.HotMoudleReplacementPlugin()
 	]
 }

@@ -1,3 +1,19 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 body{
-	background: pink;
+	background: #dcdcdc;
+	padding: 10px;
+}
+.box{
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+}
+.box p {
+	padding-left: 12px;
+	font-size: 16px;
+	letter-spacing: 1px;
 }

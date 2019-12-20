@@ -3,7 +3,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
-	mode: 'development',
+	// mode: 'development',
 	devtool: 'source-map',
 	entry: {
 		main: './src/index.js'
@@ -18,7 +18,7 @@ module.exports = {
 		proxy: {
 
 		},
-		port: 8090,
+		port: 8099,
 		hot: true,
 	},
 	module: {

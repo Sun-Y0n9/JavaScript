@@ -68,3 +68,18 @@ for (let p of params) {
 let ie = params.get('ie');
 console.log(ie); // utf-8
 // URLSearchParams实例有get set has keys等方法 (实验性api);
+
+// String.replace(res, '$n')
+let discountInfo = '满#5#, 跨店#95#折';
+let repalceReg = /([#])(\d+)([#])/g;
+let renderHTML = discountInfo.replace(repalceReg, '<span>$2</span>');
+console.log(renderHTML); // 满<span>5</span>, 跨店<span>95</span>折
+
+// RegExp 断言
+// 提取文本中, 所有的省会, 存入数组
+let provinceMsg = '黑龙江: 哈尔滨,吉林: 长春,辽宁: 沈阳,内蒙古自治区: 呼和浩特,北京: 北京,天津: 天津,河北: 石家庄,山东: 济南,山西: 太原,陕西: 西安,甘肃: 兰州,新疆维吾尔自治区: 乌鲁木齐,青海: 西宁,西藏自治区: 拉萨,四川: 成都,河南: 郑州,江苏: 南京,安徽: 合肥,湖北: 武汉,重庆: 重庆,贵州: 贵阳,湖南: 长沙,江西: 南昌,上海: 上海,浙江: 杭州,福建: 福州,云南: 昆明,广西壮族自治区: 南宁,广东: 广州,海南: 海口,香港特别行政区: 香港,澳门特别行政区: 澳门,台湾: 台北.';
+let assertionsReg = /(?<=(:\s))[\u4e00-\u9fa5]+/g;
+// (?<=y)x x只有在y后面才匹配。
+let provincialCapitalArr = provinceMsg.match(assertionsReg);
+console.log(provincialCapitalArr);
+//  ["哈尔滨", "长春", "沈阳", "呼和浩特", "北京", "天津", "石家庄", "济南", "太原", "西安", "兰州", "乌鲁木齐", "西宁", "拉萨", "成都", "郑州", "南京", "合肥", "武汉", "重庆", "贵阳", "长沙", "南昌", "上海", "杭州", "福州", "昆明", "南宁", "广州", "海口", "香港", "澳门", "台北"]

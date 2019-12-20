@@ -98,13 +98,88 @@ console.log(ie); // utf-8
 		</pre>
 		<a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams" target="_blank">URLSearchParams MDN 文档</a>
 	</div>
+	<div class="box">
+		<p>4 有保留性的替换字符串内容 </p>
+		<pre class="line-numbers">
+			<code class="language-js">
+// String.replace(res, '$n')
+let discountInfo = '满#5#, 跨店#95#折';
+let repalceReg = /([#])(\d+)([#])/g;
+let renderHTML = discountInfo.replace(repalceReg, '&lt;span&gt;$2&lt;/span&gt;');
+console.log(renderHTML); // 满&lt;span&gt;5&lt;/span&gt;, 跨店&lt;span&gt;95&lt;/span&gt;折
+			</code>
+		</pre>
+		<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank">String.repalce() MDN 文档</a>
+	</div>
+	<div class="box">
+		<p>5 提取文本中以XXX开头的后面的文本</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+// RegExp 断言
+// 提取文本中, 所有的省会, 存入数组
+let provinceMsg = '黑龙江: 哈尔滨,吉林: 长春,辽宁: 沈阳,内蒙古自治区: 呼和浩特,北京: 北京,天津: 天津,河北: 石家庄,山东: 济南,山西: 太原,陕西: 西安,甘肃: 兰州,新疆维吾尔自治区: 乌鲁木齐,青海: 西宁,西藏自治区: 拉萨,四川: 成都,河南: 郑州,江苏: 南京,安徽: 合肥,湖北: 武汉,重庆: 重庆,贵州: 贵阳,湖南: 长沙,江西: 南昌,上海: 上海,浙江: 杭州,福建: 福州,云南: 昆明,广西壮族自治区: 南宁,广东: 广州,海南: 海口,香港特别行政区: 香港,澳门特别行政区: 澳门,台湾: 台北.';
+let assertionsReg = /(?<=(:\s))[\u4e00-\u9fa5]+/g;
+// (?<=y)x x只有在y后面才匹配。
+let provincialCapitalArr = provinceMsg.match(assertionsReg);
+console.log(provincialCapitalArr);
+//  ["哈尔滨", "长春", "沈阳", "呼和浩特", "北京", "天津", "石家庄", "济南", "太原", "西安", "兰州", "乌鲁木齐", "西宁", "拉萨", "成都", "郑州", "南京", "合肥", "武汉", "重庆", "贵阳", "长沙", "南昌", "上海", "杭州", "福州", "昆明", "南宁", "广州", "海口", "香港", "澳门", "台北"]
+			</code>
+		</pre>
+		<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp#assertions" target="_blank">js 正则断言 MDN 文档</a>
+	</div>
+	<div class="box">
+		<p>6 Vue项目, npm run build之后, 将dist目录压缩 </p>
+		<pre class="line-numbers">
+			<code class="language-js">
+// 修改 vue.config.js文件
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
+module.exports = {
+  configureWebpack: config => {
+    if (isProduction) {
+      config.plugins.push(new FileManagerPlugin({
+        onEnd: {
+          delete: [
+            // 删除文件夹下的deploy.zip.
+            './deploy.zip',   
+          ],
+          archive: [
+            // 压缩dist为deploy.zip
+            {source: './dist', destination: './deploy.zip'},   
+          ]
+        }
+      }))
+    }
+  }
+}
+
+			</code>
+		</pre>
+		<a href="https://github.com/gregnb/filemanager-webpack-plugin" target="_blank">filemanager-webpack-plugin github 地址</a>
+	</div>
 	<div class="box" style="display: none;">
-		<p>4</p>
+		<p>7 正则的exec与match</p>
 		<pre class="line-numbers">
 			<code class="language-js">
 			</code>
 		</pre>
-		<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" target="_blank">MDN 文档</a>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+	</div>
+	<div class="box" style="display: none;">
+		<p>8 正则断言</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+	</div>
+	<div class="box" style="display: none;">
+		<p>9 正则的\1 \2 ...</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
 	</div>
 </body>
 </html>

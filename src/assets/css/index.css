@@ -27,3 +27,33 @@ body{
 	border-radius: 4px;
 	padding-left: 10px;
 }
+::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    /*高宽分别对应横竖滚动条的尺寸*/
+    width: 8px;
+    height: 8px;
+    background-color: #ebeef5;
+}
+::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 3px;
+    background-color: #E69F3B;
+    height: 120px;
+}
+::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */ 
+    color: #CDCDCD;
+}
+::-moz-placeholder { /* Firefox 19+ */  
+    color: #CDCDCD;
+}
+:-ms-input-placeholder { /* IE 10+ */ 
+    color: #CDCDCD;
+}
+:-moz-placeholder { /* Firefox 18- */ 
+    color: #CDCDCD;
+}

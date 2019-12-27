@@ -180,6 +180,81 @@ module.exports = {
 			</code>
 		</pre>
 		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+    </div>
+    <div class="box" style="display: none;">
+		<p>10 谷歌浏览器调试工具的 Preserve log / Throttling / Import HAR / Export HAR</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+    </div>
+    <div class="box" style="display: none;">
+		<p>11 字符串每四个组成输入的一项, 最后一项不足以*补齐</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+                let str = "abcdefghijklmnopqrstuvwxyz";
+                (str.length % 4 ? str.padEnd(str.length + (4 - str.length % 4), '*') : str).match(/.{1,4}/g);
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+    </div>
+    <div class="box" style="display: none;">
+		<p>12 情况input:type=file选择的文件</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+                let str = "abcdefghijklmnopqrstuvwxyz";
+                (str.length % 4 ? str.padEnd(str.length + (4 - str.length % 4), '*') : str).match(/.{1,4}/g);
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+    </div>
+    <div class="box" style="display: none;">
+		<p>13 利用 Proxy，可以将读取属性的操作（get），转变为执行某个函数，从而实现属性的链式操作。</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+var pipe = (function () {
+    return function (value) {
+        var funcStack = [];
+        var oproxy = new Proxy({}, {
+            get: function (pipeObject, fnName) {
+                if (fnName === 'get') {
+                    return funcStack.reduce(function (val, fn) {
+                        return fn(val);
+                    }, value);
+                }
+                funcStack.push(window[fnName]);
+                return oproxy;
+            }
+        });
+        return oproxy;
+    }
+}());
+var double = n => n * 2;
+var pow = n => n * n;
+var reverseInt = n => n.toString().split("").reverse().join("") | 0;
+let s63 = pipe(3).double.pow.reverseInt.get; // 63 3乘以2 = 6, 6的平方36, 36反转63
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
 	</div>
+    <div class="box" style="display: none;">
+		<p>13 判断数据类型</p>
+		<pre class="line-numbers">
+			<code class="language-js">
+                function type(params) {
+                    return Object.prototype.toString.call(params).slice(1, -1).split(' ')[1].toLocaleLowerCase();
+                };
+                /* 返回值为全小写, 可区分
+                undefined   null    boolean
+                string      number  symbol
+                object      array   function
+                map         set     weakmap
+                weakset     regexp  promise
+                */
+			</code>
+		</pre>
+		<a style="display: none;" href="" target="_blank">String.repalce() MDN 文档</a>
+    </div>
 </body>
 </html>
